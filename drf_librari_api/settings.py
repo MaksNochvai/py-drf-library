@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "debug_toolbar",
     "books_service",
-    "user",
+    "users_service",
     "borrowings_service",
 ]
 
@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "user.User"
+AUTH_USER_MODEL = "users_service.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -139,7 +139,7 @@ REST_FRAMEWORK = {
         "rest_framework.throttling.AnonRateThrottle",
         "rest_framework.throttling.UserRateThrottle",
     ],
-    "DEFAULT_THROTTLE_RATES": {"anon": "10/day", "user": "30/day"},
+    "DEFAULT_THROTTLE_RATES": {"anon": "10/day", "users_service": "30/day"},
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
