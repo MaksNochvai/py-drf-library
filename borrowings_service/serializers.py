@@ -17,6 +17,18 @@ class BorrowingListSerializer(serializers.ModelSerializer):
             "user_id"
         )
 
+    def create(self, validated_data):
+        book = validated_data["book_id"]
+        borrowing = Borrowing.objects.create(
+            book_id=book,
+            borrow_date=validated_data["borrow_date"],
+            expected_return_date=validated_data["expected_return_date"],
+            user_id=self.context["request"].user,
+        )
+        book.inventory -= 1
+        book.save()
+        return borrowing
+
 
 class BorrowingDetailSerializer(serializers.ModelSerializer):
     book_id = books_service.serializers.BookSerializer(read_only=True)
