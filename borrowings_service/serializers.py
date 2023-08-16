@@ -6,12 +6,15 @@ from borrowings_service.models import Borrowing
 
 
 class BorrowingListSerializer(serializers.ModelSerializer):
+    actual_return_date = serializers.ReadOnlyField()
+
     class Meta:
         model = Borrowing
         fields = (
             "id",
             "borrow_date",
             "expected_return_date",
+            "actual_return_date",
             "book_id",
             "user_id"
         )
