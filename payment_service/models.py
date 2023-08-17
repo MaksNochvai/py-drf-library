@@ -6,13 +6,13 @@ from borrowings_service.models import Borrowing
 
 
 class PaymentStatus(Enum):
-    PENDING = 'PENDING', 'Pending'
-    PAID = 'PAID', 'Paid'
+    PENDING = "Pending"
+    PAID = "Paid"
 
 
 class PaymentType(Enum):
-    PAYMENT = 'PAYMENT', 'Payment'
-    FINE = 'FINE', 'Fine'
+    PAYMENT = "Payment"
+    FINE = "Fine"
 
 
 class Payment(models.Model):
