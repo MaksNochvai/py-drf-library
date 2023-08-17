@@ -3,6 +3,4 @@ from rest_framework import permissions
 
 class IsOwnerOrAdmin(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
-        return (
-            request.user.is_staff or obj.user_id == request.user
-        )
+        return request.user.is_staff or obj.borrowing_id.user_id == request.user
