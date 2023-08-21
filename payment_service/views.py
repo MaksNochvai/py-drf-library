@@ -1,5 +1,8 @@
+import stripe
+from django.urls import reverse
 from drf_spectacular.types import OpenApiTypes
 from rest_framework import viewsets
+from rest_framework.decorators import action
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -52,3 +55,41 @@ class PaymentViewSet(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
+    @action(detail=True, methods=["post"])
+    def create_payment_session(self, request, pk=None):
+        payment = self.get_object()
+        success_url = reverse("payment_success")
+        cancel_url = reverse("payment_cancel")
+
+        session = stripe.checkout.Session.create(
+            success_url=success_url,
+            cancel_url=cancel_url,
+            payment_method_types=["card"],
+            line_items=[
+                {
+                    "price_data": {
+                        "currency": "usd",
+                        "unit_amount": int(payment.money_to_pay * 100),
+                        "product_data": {
+                            "name": "Payment for borrowing",
+                        },
+                    },
+                    "quantity": 1,
+                },
+            ],
+        )
+
+        payment.session_id = session.id
+        payment.session_url = session.url
+        payment.save()
+
+        return Response({"session_id": session.id, "session_url": session.url})
+
+    @action(detail=False, methods=["get"])
+    def payment_success(self, request):
+        return Response({"message": "Payment successful"})
+
+    @action(detail=False, methods=["get"])
+    def payment_cancel(self, request):
+        return Response({"message": "Payment cancelled"})
