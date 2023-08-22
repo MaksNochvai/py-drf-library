@@ -86,8 +86,11 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
+7. Load test data fixture:
+```
+python manage.py loaddata fixture_data.json
+```
 # Run with docker
-
 -----------------------------------
 docker should be installed
 ```
@@ -100,6 +103,11 @@ docker-compose up
 - create user via /api/users/register/
 - get access token via /api/users/token/
 
+#### Use the test user credentials:
+```
+Email: testuser@example.com
+Password: testpassword
+```
 ## Features
 - Book Inventory Management: Add, update, and delete books from the library's inventory. Keep track of book availability.
 
