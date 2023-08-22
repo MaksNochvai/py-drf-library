@@ -4,20 +4,22 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('payment_service', '0003_remove_payment_session_id_remove_payment_session_url'),
+        (
+            "payment_service",
+            "0003_remove_payment_session_id_remove_payment_session_url",
+        ),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='payment',
-            name='session_id',
+            model_name="payment",
+            name="session_id",
             field=models.CharField(blank=True, max_length=50, null=True),
         ),
         migrations.AddField(
-            model_name='payment',
-            name='session_url',
+            model_name="payment",
+            name="session_url",
             field=models.URLField(blank=True, null=True),
         ),
     ]

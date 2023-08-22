@@ -11,10 +11,18 @@ class PaymentModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.user = User.objects.create(email="user@example.com", password="password")
-        cls.book = Book.objects.create(title="Sample Book", author="John Doe", cover="HARD", inventory=5,
-                                       daily_fee=1.99)
+        cls.book = Book.objects.create(
+            title="Sample Book",
+            author="John Doe",
+            cover="HARD",
+            inventory=5,
+            daily_fee=1.99,
+        )
         cls.borrowing = Borrowing.objects.create(
-            borrow_date="2023-08-01", expected_return_date="2023-08-15", book_id=cls.book, user_id=cls.user
+            borrow_date="2023-08-01",
+            expected_return_date="2023-08-15",
+            book_id=cls.book,
+            user_id=cls.user,
         )
         cls.payment = Payment.objects.create(
             status=PaymentStatus.PENDING.value,
@@ -40,17 +48,17 @@ class PaymentModelTest(TestCase):
             status=PaymentStatus.PENDING.value,
             type=PaymentType.PAYMENT.value,
             borrowing_id=self.borrowing,
-            money_to_pay=10.00
+            money_to_pay=10.00,
         )
 
-        self.assertTrue(payment.session_url in (None, ''))
+        self.assertTrue(payment.session_url in (None, ""))
 
     def test_session_id_blank_and_null(self):
         payment = Payment.objects.create(
             status=PaymentStatus.PENDING.value,
             type=PaymentType.PAYMENT.value,
             borrowing_id=self.borrowing,
-            money_to_pay=10.00
+            money_to_pay=10.00,
         )
 
-        self.assertTrue(payment.session_id in (None, ''))
+        self.assertTrue(payment.session_id in (None, ""))

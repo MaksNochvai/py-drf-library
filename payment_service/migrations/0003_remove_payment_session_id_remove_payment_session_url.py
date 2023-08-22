@@ -4,18 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('payment_service', '0002_alter_payment_status_alter_payment_type'),
+        ("payment_service", "0002_alter_payment_status_alter_payment_type"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='payment',
-            name='session_id',
+            model_name="payment",
+            name="session_id",
         ),
         migrations.RemoveField(
-            model_name='payment',
-            name='session_url',
+            model_name="payment",
+            name="session_url",
         ),
     ]

@@ -16,8 +16,13 @@ class PaymentType(Enum):
 
 
 class Payment(models.Model):
-    status = models.CharField(max_length=255, choices=[(status.value, status.name) for status in PaymentStatus])
-    type = models.CharField(max_length=255, choices=[(type.value, type.name) for type in PaymentType])
+    status = models.CharField(
+        max_length=255,
+        choices=[(status.value, status.name) for status in PaymentStatus],
+    )
+    type = models.CharField(
+        max_length=255, choices=[(type.value, type.name) for type in PaymentType]
+    )
     borrowing_id = models.ForeignKey(Borrowing, on_delete=models.CASCADE)
     session_url = models.URLField(blank=True, null=True)
     session_id = models.CharField(max_length=50, blank=True, null=True)
