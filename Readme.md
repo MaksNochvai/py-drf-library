@@ -64,7 +64,7 @@ GET /cancel/ - Return payment paused message.
 # Install PostgreSQL and create a database
 
 1. Clone the repository:
-git clone https://github.com/MaksNochvai/py-drf-library-practice
+git clone https://github.com/MaksNochvai/py-drf-library
 2. Change directory after cloning:
 ```
 git checkout -b develop
