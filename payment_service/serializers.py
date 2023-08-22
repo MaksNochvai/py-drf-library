@@ -5,7 +5,6 @@ from payment_service.models import Payment
 
 
 class PaymentListSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Payment
         fields = (
@@ -18,7 +17,9 @@ class PaymentListSerializer(serializers.ModelSerializer):
 
 
 class PaymentDetailSerializer(serializers.ModelSerializer):
-    borrowing_id = borrowings_service.serializers.BorrowingDetailSerializer(read_only=True)
+    borrowing_id = borrowings_service.serializers.BorrowingDetailSerializer(
+        read_only=True
+    )
 
     class Meta:
         model = Payment
