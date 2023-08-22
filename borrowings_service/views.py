@@ -83,10 +83,15 @@ def return_borrowing(request, pk):
     try:
         borrowing = Borrowing.objects.get(pk=pk)
     except Borrowing.DoesNotExist:
-        return Response({"detail": "Borrowing not found."}, status=status.HTTP_404_NOT_FOUND)
+        return Response(
+            {"detail": "Borrowing not found."}, status=status.HTTP_404_NOT_FOUND
+        )
 
     if borrowing.actual_return_date:
-        return Response({"detail": "This borrowing has already been returned."}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            {"detail": "This borrowing has already been returned."},
+            status=status.HTTP_400_BAD_REQUEST,
+        )
 
     borrowing.actual_return_date = timezone.now()
     borrowing.save()
@@ -95,4 +100,7 @@ def return_borrowing(request, pk):
     book.inventory += 1
     book.save()
 
-    return Response({"detail": "Borrowing has been successfully returned."}, status=status.HTTP_200_OK)
+    return Response(
+        {"detail": "Borrowing has been successfully returned."},
+        status=status.HTTP_200_OK,
+    )

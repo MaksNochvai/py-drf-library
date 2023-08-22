@@ -20,7 +20,11 @@ class IsOwnerOrAdminPermissionTest(TestCase):
         )
 
         cls.book = Book.objects.create(
-            title="Test Book", author="Test Author", cover="HARD", inventory=10, daily_fee=1.99
+            title="Test Book",
+            author="Test Author",
+            cover="HARD",
+            inventory=10,
+            daily_fee=1.99,
         )
         cls.borrowing = Borrowing.objects.create(
             borrow_date=date(2023, 1, 1),

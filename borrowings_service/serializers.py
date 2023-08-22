@@ -16,7 +16,7 @@ class BorrowingListSerializer(serializers.ModelSerializer):
             "expected_return_date",
             "actual_return_date",
             "book_id",
-            "user_id"
+            "user_id",
         )
 
     def create(self, validated_data):
@@ -44,5 +44,5 @@ class BorrowingDetailSerializer(serializers.ModelSerializer):
             "expected_return_date",
             "actual_return_date",
             "book_id",
-            "user_id"
+            "user_id",
         )
