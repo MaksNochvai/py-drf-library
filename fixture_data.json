@@ -1,0 +1,102 @@
+[
+     {
+        "model": "users_service.user",
+        "pk": 1,
+        "fields": {
+            "email": "testuser@example.com",
+            "password": "pbkdf2_sha256$260000$6uXeHg8HGvNO$oxtLDEt2AW4XzxwzTXQy2EiUm9j1dWYNNGRhahggvEE=",
+            "is_active": true,
+            "is_staff": false
+        }
+    },
+    {
+        "model": "users_service.user",
+        "pk": 2,
+        "fields": {
+            "email": "admin@example.com",
+            "password": "pbkdf2_sha256$260000$6uXeHg8HGvNO$oxtLDEt2AW4XzxwzTXQy2EiUm9j1dWYNNGRhahggvEE=",
+            "is_active": true,
+            "is_staff": true,
+            "is_superuser": true
+        }
+    },
+    {
+        "model": "books_service.book",
+        "pk": 1,
+        "fields": {
+            "title": "Sample Book 1",
+            "author": "John Doe",
+            "cover": "HARD",
+            "inventory": 10,
+            "daily_fee": "1.50"
+        }
+    },
+    {
+        "model": "books_service.book",
+        "pk": 2,
+        "fields": {
+            "title": "Sample Book 2",
+            "author": "Jane Smith",
+            "cover": "SOFT",
+            "inventory": 5,
+            "daily_fee": "2.00"
+        }
+    },
+     {
+        "model": "users_service.user",
+        "pk": 1,
+        "fields": {
+            "email": "test12user@example.com",
+            "password": "pbkdf2_sha256$260000$6uXeHg8HGvNO$oxtLDEt2AW4XzxwzTXQy2EiUm9j1dWYNNGRhahggvEE=",
+            "is_active": true,
+            "is_staff": false,
+            "is_superuser": false
+        }
+    },
+    {
+        "model": "users_service.user",
+        "pk": 2,
+        "fields": {
+            "email": "admin22@example.com",
+            "password": "pbkdf2_sha256$260000$6uXeHg8HGvNO$oxtLDEt2AW4XzxwzTXQy2EiUm9j1dWYNNGRhahggvEE=",
+            "is_active": true,
+            "is_staff": true,
+            "is_superuser": true
+        }
+    },
+    {
+        "model": "borrowings_service.borrowing",
+        "pk": 1,
+        "fields": {
+            "borrow_date": "2023-08-01",
+            "expected_return_date": "2023-08-15",
+            "actual_return_date": null,
+            "book_id": 1,
+            "user_id": 1
+        }
+    },
+    {
+        "model": "borrowings_service.borrowing",
+        "pk": 2,
+        "fields": {
+            "borrow_date": "2023-08-10",
+            "expected_return_date": "2023-08-25",
+            "actual_return_date": "2023-08-20",
+            "book_id": 2,
+            "user_id": 2
+        }
+    },
+    {
+        "model": "payment_service.payment",
+        "pk": 1,
+        "fields": {
+            "status": "PAID",
+            "type": "PAYMENT",
+            "borrowing_id": 1,
+            "session_url": "https://stripe.com/session/1",
+            "session_id": "session_1",
+            "money_to_pay": "5.00"
+        }
+    }
+]
+
