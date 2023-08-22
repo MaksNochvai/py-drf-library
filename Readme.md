@@ -114,7 +114,7 @@ docker-compose up
 
 ------
 ## Technologies Used
-The Airport Service API is built with the following technologies:
+The Library API is built with the following technologies:
 
 - Python: The primary programming language used for backend development.
 
